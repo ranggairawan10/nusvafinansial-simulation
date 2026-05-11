@@ -1,0 +1,2103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KSPPS Nusva Digital Finansial Syariah</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary: #0FA3B1;
+  --primary-dark: #0A3D62;
+  --primary-light: #1ECAD3;
+  --primary-faint: #E4F6F8;
+  --gold: #1ECAD3;
+  --gold-light: #3DD6DE;
+  --gold-faint: #EAF9FA;
+  --dark: #0A3D62;
+  --dark-2: #0D4E7C;
+  --mid: #4A7290;
+  --light: #F9FAFB;
+  --light-2: #EDF1F4;
+  --white: #FFFFFF;
+  --text: #0A3D62;
+  --text-muted: #5A7A92;
+  --success: #12A15A;
+  --warning: #D97706;
+  --danger: #DC2626;
+  --radius: 12px;
+  --radius-lg: 20px;
+  --shadow: 0 4px 24px rgba(10,61,98,0.10);
+  --shadow-lg: 0 12px 48px rgba(10,61,98,0.16);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--light);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--light-2); }
+::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 3px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  background: rgba(13,26,24,0.96);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(184,134,11,0.2);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 64px;
+}
+
+.nav-brand {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Playfair Display', serif;
+  color: var(--white);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.nav-brand .dot {
+  width: 8px; height: 8px;
+  background: var(--gold-light);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.nav-links {
+  display: flex; gap: 0.25rem; list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.nav-links a:hover {
+  color: var(--white);
+  background: rgba(184,134,11,0.15);
+}
+
+.nav-tag {
+  background: var(--gold);
+  color: var(--dark);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  border-radius: 20px;
+  letter-spacing: 0.05em;
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  background: var(--dark);
+  position: relative;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 6rem 2rem 4rem;
+  overflow: hidden;
+}
+
+.hero-geo {
+  position: absolute;
+  inset: 0;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80'%3E%3Cpath fill='none' stroke='%23C8A02A' stroke-width='0.8' d='M40 0L80 40L40 80L0 40z M40 10L70 40L40 70L10 40z M40 20L60 40L40 60L20 40z'/%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+.hero-glow {
+  position: absolute;
+  top: -20%; left: -10%;
+  width: 60%; height: 60%;
+  background: radial-gradient(circle, rgba(10,110,92,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-glow-2 {
+  position: absolute;
+  bottom: -10%; right: -5%;
+  width: 50%; height: 50%;
+  background: radial-gradient(circle, rgba(184,134,11,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-inner {
+  max-width: 1100px; margin: 0 auto; width: 100%;
+  position: relative; z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(184,134,11,0.15);
+  border: 1px solid rgba(184,134,11,0.3);
+  color: var(--gold-light);
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  letter-spacing: 0.08em;
+  margin-bottom: 1.5rem;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 700;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+  animation: fadeInUp 0.6s 0.1s ease both;
+}
+
+.hero-title .accent { color: var(--gold-light); }
+
+.hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.55);
+  max-width: 560px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  font-weight: 300;
+  animation: fadeInUp 0.6s 0.2s ease both;
+}
+
+.hero-stats {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.06);
+  border-radius: var(--radius);
+  overflow: hidden;
+  max-width: 700px;
+  animation: fadeInUp 0.6s 0.3s ease both;
+}
+
+.hero-stat {
+  background: rgba(255,255,255,0.03);
+  padding: 1.25rem 1.5rem;
+  text-align: center;
+  transition: background 0.2s;
+}
+
+.hero-stat:hover { background: rgba(10,110,92,0.15); }
+
+.hero-stat .num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  display: block;
+}
+
+.hero-stat .lbl {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 0.15rem;
+}
+
+/* ── SECTION BASE ── */
+section { padding: 5rem 2rem; }
+
+.section-inner { max-width: 1100px; margin: 0 auto; }
+
+.section-tag {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.section-tag::before {
+  content: '';
+  display: inline-block;
+  width: 20px; height: 2px;
+  background: var(--gold);
+  border-radius: 1px;
+}
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: var(--dark);
+  line-height: 1.25;
+  margin-bottom: 0.6rem;
+}
+
+.section-desc {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+/* ── PRODUCTS ── */
+#produk { background: var(--white); }
+
+.prod-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-top: 2.5rem;
+}
+
+.prod-card {
+  background: var(--white);
+  border: 1px solid var(--light-2);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.prod-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+.prod-card:hover {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.prod-card:hover::before { transform: scaleX(1); }
+
+.prod-card.featured {
+  background: var(--primary-dark);
+  border-color: var(--primary-dark);
+  color: white;
+}
+
+.prod-card.featured::before { background: var(--gold); }
+
+.prod-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--primary-faint);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+}
+
+.prod-card.featured .prod-icon {
+  background: rgba(255,255,255,0.12);
+}
+
+.prod-akad {
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.prod-card.featured .prod-akad { color: var(--gold-light); }
+
+.prod-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--dark);
+  margin-bottom: 0.6rem;
+}
+
+.prod-card.featured .prod-name { color: white; }
+
+.prod-desc {
+  font-size: 0.83rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 1.25rem;
+}
+
+.prod-card.featured .prod-desc { color: rgba(255,255,255,0.65); }
+
+.prod-detail { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.prod-row {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.8rem;
+  padding: 0.4rem 0;
+  border-top: 1px solid var(--light-2);
+}
+
+.prod-card.featured .prod-row { border-top-color: rgba(255,255,255,0.1); }
+
+.prod-row .key { color: var(--text-muted); font-weight: 400; }
+.prod-card.featured .prod-row .key { color: rgba(255,255,255,0.55); }
+
+.prod-row .val {
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.prod-card.featured .prod-row .val { color: var(--gold-light); }
+
+.prod-badge-list {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 0.75rem;
+}
+
+.prod-badge {
+  font-size: 0.65rem;
+  font-weight: 500;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: var(--primary-faint);
+  color: var(--primary-dark);
+}
+
+.prod-card.featured .prod-badge {
+  background: rgba(255,255,255,0.12);
+  color: rgba(255,255,255,0.8);
+}
+
+/* ── SIMPANAN ── */
+.simpanan-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.simp-card {
+  background: var(--light);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  border-left: 3px solid var(--primary);
+}
+
+.simp-type {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.4rem;
+}
+
+.simp-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.simp-amount {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: 0.25rem;
+}
+
+.simp-note {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.simp-guarantee {
+  margin-top: 1rem;
+  background: rgba(10,110,92,0.06);
+  border: 1px solid rgba(10,110,92,0.15);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.78rem;
+  color: var(--primary-dark);
+  display: flex; align-items: flex-start; gap: 8px;
+}
+
+/* ── SIMULATOR ── */
+#simulator { background: var(--dark); color: white; }
+#simulator .section-title { color: white; }
+#simulator .section-desc { color: rgba(255,255,255,0.5); }
+#simulator .section-tag { color: var(--gold-light); }
+
+.sim-tabs {
+  display: flex; gap: 0.5rem;
+  margin: 2rem 0 1.5rem;
+  background: rgba(255,255,255,0.05);
+  border-radius: 10px;
+  padding: 0.35rem;
+  max-width: fit-content;
+}
+
+.sim-tab {
+  padding: 0.55rem 1.25rem;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: rgba(255,255,255,0.5);
+  transition: all 0.25s;
+  letter-spacing: 0.01em;
+}
+
+.sim-tab.active {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 2px 12px rgba(10,110,92,0.4);
+}
+
+.sim-panel { display: none; }
+.sim-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+
+.sim-inputs {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+.sim-result {
+  background: var(--primary-dark);
+  border: 1px solid rgba(10,110,92,0.4);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.6);
+  margin-bottom: 0.4rem;
+  letter-spacing: 0.03em;
+}
+
+.form-input, .form-select {
+  width: 100%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  color: white;
+  font-size: 0.92rem;
+  font-family: 'DM Sans', sans-serif;
+  padding: 0.65rem 0.9rem;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+.form-input:focus, .form-select:focus {
+  border-color: var(--primary-light);
+}
+
+.form-select option { background: var(--dark-2); color: white; }
+
+.form-range-row {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 0.5rem;
+}
+
+.form-range {
+  flex: 1;
+  -webkit-appearance: none;
+  height: 4px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 2px;
+  outline: none;
+}
+
+.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px; height: 16px;
+  background: var(--primary-light);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.form-range-val {
+  min-width: 90px;
+  text-align: right;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gold-light);
+}
+
+.btn-calc {
+  width: 100%;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: all 0.2s;
+  font-family: 'DM Sans', sans-serif;
+}
+
+.btn-calc:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+.res-label {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 0.25rem;
+}
+
+.res-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  margin-bottom: 0.1rem;
+}
+
+.res-sub {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 1.25rem;
+}
+
+.res-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 1rem 0;
+}
+
+.res-row {
+  display: flex; justify-content: space-between;
+  font-size: 0.82rem;
+  padding: 0.35rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.res-row .rk { color: rgba(255,255,255,0.5); }
+.res-row .rv { font-weight: 600; color: white; }
+
+.res-highlight {
+  background: rgba(184,134,11,0.15);
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: var(--gold-light);
+  border: 1px solid rgba(184,134,11,0.25);
+  line-height: 1.5;
+}
+
+/* ── RISK MANAGEMENT ── */
+#risiko { background: var(--light); }
+
+.risk-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.risk-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  border: 1px solid var(--light-2);
+}
+
+.risk-card-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 1.25rem;
+}
+
+.risk-icon {
+  width: 36px; height: 36px;
+  background: var(--primary-faint);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+}
+
+.risk-card-head h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+/* Ratio bars */
+.ratio-list { display: flex; flex-direction: column; gap: 1rem; }
+
+.ratio-item { }
+
+.ratio-top {
+  display: flex; justify-content: space-between;
+  font-size: 0.78rem;
+  margin-bottom: 0.3rem;
+}
+
+.ratio-name { font-weight: 500; color: var(--text); }
+.ratio-val { font-weight: 700; color: var(--primary); }
+.ratio-target { color: var(--text-muted); font-size: 0.7rem; }
+
+.ratio-bar {
+  height: 6px;
+  background: var(--light-2);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.ratio-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: var(--primary);
+  transition: width 1s ease;
+}
+
+.ratio-fill.gold { background: var(--gold); }
+.ratio-fill.green { background: var(--success); }
+
+/* PPAP Table */
+.ppap-table { width: 100%; border-collapse: collapse; font-size: 0.8rem; }
+.ppap-table th {
+  background: var(--primary-dark);
+  color: white;
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.ppap-table td {
+  padding: 0.5rem 0.75rem;
+  border-bottom: 1px solid var(--light-2);
+  color: var(--text);
+}
+
+.ppap-table tr:last-child td { border-bottom: none; }
+
+.ppap-table tr:nth-child(even) td { background: var(--light); }
+
+.badge-kol {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.kol-1 { background: #DCFCE7; color: #166534; }
+.kol-2 { background: #FEF9C3; color: #854D0E; }
+.kol-3 { background: #FEF3C7; color: #92400E; }
+.kol-4 { background: #FFE4E6; color: #9F1239; }
+.kol-5 { background: #FEE2E2; color: #7F1D1D; }
+
+/* Repayment capacity */
+.rcap-visual {
+  position: relative;
+  height: 160px;
+  margin: 1rem 0;
+}
+
+.rcap-bar-wrap {
+  display: flex; align-items: flex-end;
+  height: 100%;
+  gap: 0.75rem;
+}
+
+.rcap-col {
+  flex: 1;
+  display: flex; flex-direction: column;
+  align-items: center;
+}
+
+.rcap-bar-outer {
+  width: 100%;
+  height: 120px;
+  background: var(--light-2);
+  border-radius: 6px 6px 0 0;
+  display: flex; flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.rcap-bar-fill {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  transition: height 1s ease;
+}
+
+.rcap-lbl {
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-top: 0.4rem;
+  text-align: center;
+}
+
+.rcap-num {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+/* ── GOVERNANCE ── */
+#governance { background: var(--dark); color: white; }
+#governance .section-title { color: white; }
+#governance .section-desc { color: rgba(255,255,255,0.5); }
+#governance .section-tag { color: var(--gold-light); }
+
+.gov-grid {
+  display: grid; grid-template-columns: 1fr 1.4fr;
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.gov-pyramid {
+  display: flex; flex-direction: column;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.pyr-level {
+  border-radius: 8px;
+  padding: 0.75rem 1.25rem;
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+.pyr-level:hover { transform: scale(1.02); }
+
+.pyr-level-1 {
+  background: var(--gold);
+  color: var(--dark);
+  width: 65%;
+}
+
+.pyr-level-2 {
+  background: var(--primary);
+  color: white;
+  width: 78%;
+}
+
+.pyr-level-3 {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: white;
+  width: 90%;
+}
+
+.pyr-level-4 {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.7);
+  width: 100%;
+}
+
+.pyr-level h4 { font-size: 0.82rem; font-weight: 700; }
+.pyr-level p { font-size: 0.7rem; opacity: 0.75; margin-top: 0.1rem; }
+
+.gov-creds {
+  display: flex; flex-direction: column; gap: 1rem;
+}
+
+.cred-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-left: 3px solid var(--gold);
+  border-radius: 10px;
+  padding: 1.1rem 1.25rem;
+}
+
+.cred-card h4 {
+  font-size: 0.88rem;
+  font-weight: 700;
+  margin-bottom: 0.4rem;
+}
+
+.cred-card p {
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+}
+
+.cert-badges {
+  display: flex; flex-wrap: wrap; gap: 0.4rem;
+  margin-top: 0.6rem;
+}
+
+.cert-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border-radius: 4px;
+  background: rgba(184,134,11,0.2);
+  color: var(--gold-light);
+  letter-spacing: 0.04em;
+}
+
+/* ── TRUST ── */
+#trust { background: var(--white); }
+
+.trust-q-grid {
+  display: grid; grid-template-columns: 1fr;
+  gap: 0; margin-top: 2rem;
+}
+
+.trust-item {
+  border-bottom: 1px solid var(--light-2);
+  overflow: hidden;
+}
+
+.trust-q {
+  width: 100%;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.25rem 0;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--dark);
+  gap: 1rem;
+}
+
+.trust-q .q-icon {
+  min-width: 28px; height: 28px;
+  background: var(--primary-faint);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--primary);
+  transition: all 0.3s;
+}
+
+.trust-item.open .trust-q .q-icon {
+  background: var(--primary);
+  color: white;
+  transform: rotate(45deg);
+}
+
+.trust-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+
+.trust-item.open .trust-a { max-height: 400px; }
+
+.trust-a-inner {
+  padding: 0 0 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.trust-a-inner ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 0.75rem;
+  display: flex; flex-direction: column; gap: 0.4rem;
+}
+
+.trust-a-inner li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 0.82rem;
+}
+
+.trust-a-inner li::before {
+  content: '✓';
+  color: var(--primary);
+  font-weight: 700;
+  font-size: 0.8rem;
+  margin-top: 0.1rem;
+}
+
+/* ── PROYEKSI ROXY ── */
+#proyeksi { background: var(--light); }
+
+.proj-kpi-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.kpi-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  border: 1px solid var(--light-2);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.kpi-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+
+.kpi-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary), var(--gold));
+}
+
+.kpi-icon { font-size: 1.5rem; margin-bottom: 0.5rem; }
+
+.kpi-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--primary);
+  display: block;
+}
+
+.kpi-label {
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin-top: 0.25rem;
+  line-height: 1.4;
+}
+
+.proj-table-wrap {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem;
+  margin-top: 1.5rem;
+  border: 1px solid var(--light-2);
+  overflow-x: auto;
+}
+
+.proj-table-wrap h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+  color: var(--dark);
+}
+
+.proj-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+
+.proj-table th {
+  background: var(--dark);
+  color: white;
+  padding: 0.6rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+.proj-table th:first-child { border-radius: 6px 0 0 0; }
+.proj-table th:last-child { border-radius: 0 6px 0 0; }
+
+.proj-table td {
+  padding: 0.65rem 1rem;
+  border-bottom: 1px solid var(--light-2);
+  color: var(--text);
+}
+
+.proj-table tr:last-child td { border-bottom: none; }
+
+.proj-table .highlight-row td {
+  background: rgba(10,110,92,0.05);
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--dark);
+  color: rgba(255,255,255,0.45);
+  padding: 2rem;
+  text-align: center;
+  font-size: 0.78rem;
+  line-height: 1.7;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+footer strong { color: rgba(255,255,255,0.8); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav .nav-links { display: none; }
+  .prod-grid { grid-template-columns: 1fr; }
+  .sim-panel.active { grid-template-columns: 1fr; }
+  .risk-grid { grid-template-columns: 1fr; }
+  .gov-grid { grid-template-columns: 1fr; }
+  .proj-kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .simpanan-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-brand">
+    <span class="dot"></span>
+    KSPPS Nusva Digital Finansial Syariah
+  </div>
+  <ul class="nav-links">
+    <li><a href="#produk">Produk</a></li>
+    <li><a href="#simulator">Simulasi</a></li>
+    <li><a href="#risiko">Manajemen Risiko</a></li>
+    <li><a href="#governance">Governance</a></li>
+    <li><a href="#trust">Keamanan Dana</a></li>
+    <li><a href="#proyeksi">Proyeksi</a></li>
+  </ul>
+  <span class="nav-tag">OJK KSPPS</span>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-geo"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-glow-2"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">
+      ☽ Berbasis Akad Syariah &nbsp;·&nbsp; Digital-First &nbsp;·&nbsp; Transparan
+    </div>
+    <h1 class="hero-title">
+      Koperasi Karyawan<br>
+      yang <span class="accent">Benar-Benar</span><br>
+      Berpihak
+    </h1>
+    <p class="hero-sub">
+      Bukan sekadar simpan-pinjam. KSPPS Nusva menghadirkan ekosistem keuangan syariah yang terintegrasi penuh dengan payroll karyawan, diawasi Dewan Pengawas Syariah, dan dikelola secara profesional.
+    </p>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="num">0%</span>
+        <span class="lbl">Bunga (Riba)</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">5K</span>
+        <span class="lbl">Biaya Admin Min.</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">1 Hari</span>
+        <span class="lbl">Pencairan Darurat</span>
+      </div>
+      <div class="hero-stat">
+        <span class="num">100%</span>
+        <span class="lbl">Simpanan Dikembalikan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUK -->
+<section id="produk">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Produk Layanan</div>
+      <h2 class="section-title">Lima Solusi Keuangan,<br>Satu Akad yang Jelas</h2>
+      <p class="section-desc">Setiap produk dirancang berbasis akad fiqih muamalah yang valid, bukan sekadar label "syariah" untuk keperluan marketing.</p>
+    </div>
+
+    <div class="prod-grid reveal">
+      <!-- Dana Darurat -->
+      <div class="prod-card featured">
+        <div class="prod-icon">🚨</div>
+        <div class="prod-akad">Akad: Qardh Hasan</div>
+        <div class="prod-name">Dana Darurat Karyawan</div>
+        <div class="prod-desc">Pinjaman tanpa margin untuk kedaruratan riil. Dikembalikan sekali bayar saat payroll bulan berikutnya. Murni tolong-menolong, bukan transaksi komersial.</div>
+        <div class="prod-detail">
+          <div class="prod-row">
+            <span class="key">Plafon</span>
+            <span class="val">Rp 500.000 – Rp 1.000.000</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Biaya Admin</span>
+            <span class="val">Rp 5.000 – Rp 20.000 flat</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Pembayaran</span>
+            <span class="val">Potong gaji bulan ke-1</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Margin</span>
+            <span class="val">0% — Halal Murni</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Proses</span>
+            <span class="val">Maks. 1 hari kerja</span>
+          </div>
+        </div>
+        <div class="prod-badge-list">
+          <span class="prod-badge">Tanpa Agunan</span>
+          <span class="prod-badge">Auto-deduct Payroll</span>
+          <span class="prod-badge">0% Bunga</span>
+        </div>
+      </div>
+
+      <!-- Murabahah Elektronik -->
+      <div class="prod-card">
+        <div class="prod-icon">📱</div>
+        <div class="prod-akad">Akad: Murabahah</div>
+        <div class="prod-name">Pembiayaan Elektronik</div>
+        <div class="prod-desc">Pembelian barang elektronik dengan transparansi harga pokok dan margin. Koperasi membeli, anggota mencicil. Tidak ada biaya tersembunyi.</div>
+        <div class="prod-detail">
+          <div class="prod-row">
+            <span class="key">Margin</span>
+            <span class="val">15–18% per tahun</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Plafon</span>
+            <span class="val">Maks. 1x gaji per bulan</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Tenor</span>
+            <span class="val">3 – 24 bulan</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Angsuran</span>
+            <span class="val">Maks. 30% take-home pay</span>
+          </div>
+        </div>
+        <div class="prod-badge-list">
+          <span class="prod-badge">Harga Transparan</span>
+          <span class="prod-badge">Fixed Angsuran</span>
+        </div>
+      </div>
+
+      <!-- Murabahah Emas -->
+      <div class="prod-card">
+        <div class="prod-icon">🪙</div>
+        <div class="prod-akad">Akad: Murabahah</div>
+        <div class="prod-name">Pembiayaan Emas</div>
+        <div class="prod-desc">Kepemilikan emas bertahap untuk perlindungan nilai aset. Margin lebih rendah karena emas adalah komoditi yang nilainya relatif stabil.</div>
+        <div class="prod-detail">
+          <div class="prod-row">
+            <span class="key">Margin</span>
+            <span class="val">12–15% per tahun</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Minimum</span>
+            <span class="val">1 gram emas</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Tenor</span>
+            <span class="val">3 – 36 bulan</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Angsuran</span>
+            <span class="val">Maks. 30% take-home pay</span>
+          </div>
+        </div>
+        <div class="prod-badge-list">
+          <span class="prod-badge">Nilai Stabil</span>
+          <span class="prod-badge">Investasi + Pembiayaan</span>
+        </div>
+      </div>
+
+      <!-- Murabahah Modal Kerja -->
+      <div class="prod-card">
+        <div class="prod-icon">🛠️</div>
+        <div class="prod-akad">Akad: Murabahah</div>
+        <div class="prod-name">Pembiayaan Modal Kerja</div>
+        <div class="prod-desc">Untuk karyawan yang memiliki usaha sampingan. Pembelian bahan baku, peralatan, atau perlengkapan usaha dengan akad murabahah yang transparan.</div>
+        <div class="prod-detail">
+          <div class="prod-row">
+            <span class="key">Margin</span>
+            <span class="val">15–18% per tahun</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Plafon</span>
+            <span class="val">Hingga Rp 5.000.000</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Tenor</span>
+            <span class="val">3 – 18 bulan</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Dokumen</span>
+            <span class="val">Invoice barang wajib ada</span>
+          </div>
+        </div>
+        <div class="prod-badge-list">
+          <span class="prod-badge">UMKM Karyawan</span>
+          <span class="prod-badge">Produktif</span>
+        </div>
+      </div>
+
+      <!-- Simpanan Mudharabah -->
+      <div class="prod-card">
+        <div class="prod-icon">💼</div>
+        <div class="prod-akad">Akad: Mudharabah Muthlaqah</div>
+        <div class="prod-name">Simpanan Produktif</div>
+        <div class="prod-desc">Simpanan sukarela yang diinvestasikan ke instrumen halal. Anggota menerima bagi hasil berdasarkan nisbah yang disepakati di awal, bukan bunga tetap.</div>
+        <div class="prod-detail">
+          <div class="prod-row">
+            <span class="key">Nisbah Anggota</span>
+            <span class="val">40–60% dari hasil</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Setoran Min.</span>
+            <span class="val">Rp 10.000</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Distribusi</span>
+            <span class="val">Setiap bulan</span>
+          </div>
+          <div class="prod-row">
+            <span class="key">Pencairan</span>
+            <span class="val">Kapan saja</span>
+          </div>
+        </div>
+        <div class="prod-badge-list">
+          <span class="prod-badge">Bagi Hasil Halal</span>
+          <span class="prod-badge">Fleksibel</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Simpanan Pokok & Wajib -->
+    <div class="reveal" style="margin-top:2rem;">
+      <div class="section-tag">Keanggotaan</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.3rem; font-weight:700; margin-bottom:0.5rem;">Struktur Simpanan Keanggotaan</h3>
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:1rem;">Simpanan bukan biaya. Ini adalah kepemilikan Anda dalam koperasi. Akan dikembalikan sepenuhnya jika Anda berhenti menjadi anggota.</p>
+      <div class="simpanan-grid">
+        <div class="simp-card">
+          <div class="simp-type">Sekali Seumur Hidup</div>
+          <div class="simp-name">Simpanan Pokok</div>
+          <div class="simp-amount">Rp 100.000</div>
+          <div class="simp-note">Dibayar satu kali saat daftar. Tidak pernah dipotong. Dikembalikan penuh saat resign atau keluar dari koperasi.</div>
+        </div>
+        <div class="simp-card">
+          <div class="simp-type">Rutin Bulanan</div>
+          <div class="simp-name">Simpanan Wajib</div>
+          <div class="simp-amount">Rp 50.000/bln</div>
+          <div class="simp-note">Dipotong otomatis dari payroll. Terus bertumbuh seiring masa kerja. Dikembalikan penuh beserta SHU proporsional saat resign.</div>
+        </div>
+        <div class="simp-card">
+          <div class="simp-type">Sukarela</div>
+          <div class="simp-name">Simpanan Mudharabah</div>
+          <div class="simp-amount">Bebas</div>
+          <div class="simp-note">Dapat ditambah atau ditarik kapan saja. Mendapat bagi hasil dari hasil usaha koperasi setiap bulan.</div>
+        </div>
+      </div>
+      <div class="simp-guarantee reveal">
+        <span>🛡️</span>
+        <span><strong>Jaminan Kembali:</strong> Simpanan Pokok dan Simpanan Wajib adalah hak mutlak anggota. Bukan modal yang bisa hilang. Dalam kondisi apapun, koperasi wajib mengembalikan simpanan anggota yang keluar berdasarkan UU No. 17 Tahun 2012 tentang Perkoperasian dan AD/ART KSPPS Nusva.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIMULATOR -->
+<section id="simulator">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Kalkulator Interaktif</div>
+      <h2 class="section-title">Simulasi Produk Secara Real-Time</h2>
+      <p class="section-desc">Hitung sendiri berapa yang Anda bayar, berapa yang Anda terima. Tidak ada angka tersembunyi.</p>
+    </div>
+
+    <div class="sim-tabs reveal">
+      <button class="sim-tab active" onclick="switchTab('darurat')">Dana Darurat</button>
+      <button class="sim-tab" onclick="switchTab('murabahah')">Margin Murabahah</button>
+      <button class="sim-tab" onclick="switchTab('bagihasil')">Bagi Hasil Simpanan</button>
+    </div>
+
+    <!-- TAB 1: DANA DARURAT -->
+    <div class="sim-panel active reveal" id="tab-darurat">
+      <div class="sim-inputs">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; margin-bottom:1.25rem; color:var(--gold-light);">Input Dana Darurat</h3>
+        <label class="form-label">Jumlah Pinjaman Darurat</label>
+        <div class="form-range-row">
+          <input type="range" class="form-range" id="darurat-amount" min="500000" max="1000000" step="50000" value="500000" oninput="calcDarurat()">
+          <span class="form-range-val" id="darurat-amount-val">Rp 500.000</span>
+        </div>
+        <label class="form-label" style="margin-top:0.5rem;">Biaya Admin</label>
+        <select class="form-select" id="darurat-admin" onchange="calcDarurat()">
+          <option value="5000">Rp 5.000 (pinjaman ≤ Rp 600K)</option>
+          <option value="10000">Rp 10.000 (pinjaman Rp 601K–800K)</option>
+          <option value="20000">Rp 20.000 (pinjaman Rp 801K–1Jt)</option>
+        </select>
+        <label class="form-label">Tanggal Gajian</label>
+        <select class="form-select" id="darurat-payroll">
+          <option value="1">Tanggal 1</option>
+          <option value="5">Tanggal 5</option>
+          <option value="10">Tanggal 10</option>
+          <option value="25">Tanggal 25</option>
+          <option value="28">Tanggal 28</option>
+        </select>
+        <button class="btn-calc" onclick="calcDarurat()">Hitung Sekarang</button>
+      </div>
+      <div class="sim-result">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; margin-bottom:1.25rem; color:rgba(255,255,255,0.8);">Ringkasan Pinjaman</h3>
+        <div class="res-label">Total yang Dikembalikan</div>
+        <div class="res-value" id="d-total">Rp 505.000</div>
+        <div class="res-sub">Dibayar satu kali saat gajian berikutnya</div>
+        <div class="res-divider"></div>
+        <div class="res-row"><span class="rk">Pokok Pinjaman</span><span class="rv" id="d-pokok">Rp 500.000</span></div>
+        <div class="res-row"><span class="rk">Biaya Admin (Flat)</span><span class="rv" id="d-admin">Rp 5.000</span></div>
+        <div class="res-row"><span class="rk">Margin / Bunga</span><span class="rv" style="color:#22C55E;">Rp 0 (HALAL)</span></div>
+        <div class="res-row"><span class="rk">Efektif Cost</span><span class="rv" id="d-efektif">~1%</span></div>
+        <div class="res-row"><span class="rk">Pembayaran</span><span class="rv" id="d-bayar">Auto-potong gaji</span></div>
+        <div class="res-highlight" id="d-compare">
+          💡 Dibanding pinjol 0.4%/hari, biaya Anda Rp 5.000 vs estimasi Rp 60.000. Hemat Rp 55.000.
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: MURABAHAH -->
+    <div class="sim-panel" id="tab-murabahah">
+      <div class="sim-inputs">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; margin-bottom:1.25rem; color:var(--gold-light);">Input Pembiayaan Murabahah</h3>
+        <label class="form-label">Jenis Pembiayaan</label>
+        <select class="form-select" id="mur-type" onchange="calcMurabahah()">
+          <option value="15">Elektronik (Margin 15% p.a.)</option>
+          <option value="16">Elektronik (Margin 16% p.a.)</option>
+          <option value="17">Elektronik/Modal Kerja (17% p.a.)</option>
+          <option value="18">Modal Kerja (Margin 18% p.a.)</option>
+          <option value="12">Emas (Margin 12% p.a.)</option>
+          <option value="13">Emas (Margin 13% p.a.)</option>
+          <option value="15">Emas (Margin 15% p.a.)</option>
+        </select>
+        <label class="form-label">Harga Pokok Barang</label>
+        <div class="form-range-row">
+          <input type="range" class="form-range" id="mur-harga" min="500000" max="10000000" step="500000" value="2000000" oninput="calcMurabahah()">
+          <span class="form-range-val" id="mur-harga-val">Rp 2.000.000</span>
+        </div>
+        <label class="form-label" style="margin-top:0.5rem;">Tenor (bulan)</label>
+        <div class="form-range-row">
+          <input type="range" class="form-range" id="mur-tenor" min="3" max="24" step="3" value="12" oninput="calcMurabahah()">
+          <span class="form-range-val" id="mur-tenor-val">12 bulan</span>
+        </div>
+        <button class="btn-calc" onclick="calcMurabahah()">Hitung Margin</button>
+      </div>
+      <div class="sim-result">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; margin-bottom:1.25rem; color:rgba(255,255,255,0.8);">Rincian Murabahah</h3>
+        <div class="res-label">Angsuran per Bulan</div>
+        <div class="res-value" id="m-angsuran">Rp 191.667</div>
+        <div class="res-sub" id="m-sub">Flat selama 12 bulan</div>
+        <div class="res-divider"></div>
+        <div class="res-row"><span class="rk">Harga Pokok</span><span class="rv" id="m-pokok">Rp 2.000.000</span></div>
+        <div class="res-row"><span class="rk">Margin Koperasi</span><span class="rv" id="m-margin">Rp 300.000</span></div>
+        <div class="res-row"><span class="rk">Harga Jual Total</span><span class="rv" id="m-total">Rp 2.300.000</span></div>
+        <div class="res-row"><span class="rk">Rate p.a.</span><span class="rv" id="m-rate">15%</span></div>
+        <div class="res-row"><span class="rk">Jenis Angsuran</span><span class="rv">Flat (Tetap)</span></div>
+        <div class="res-highlight">
+          💡 Harga jual dan margin disepakati di awal dan tidak berubah. Ini adalah Murabahah, bukan kredit berbunga variabel.
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 3: BAGI HASIL -->
+    <div class="sim-panel" id="tab-bagihasil">
+      <div class="sim-inputs">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1.05rem; font-weight:700; margin-bottom:1.25rem; color:var(--gold-light);">Input Simulasi Bagi Hasil</h3>
+        <label class="form-label">Total Simpanan Anda</label>
+        <div class="form-range-row">
+          <input type="range" class="form-range" id="bh-simpanan" min="100000" max="20000000" step="100000" value="1200000" oninput="calcBagiHasil()">
+          <span class="form-range-val" id="bh-simpanan-val">Rp 1.200.000</span>
+        </div>
+        <label class="form-label" style="margin-top:0.5rem;">Nisbah Anggota</label>
+        <select class="form-select" id="bh-nisbah" onchange="calcBagiHasil()">
+          <option value="40">40% (Nisbah Minimal)</option>
+          <option value="50" selected>50% (Standar)</option>
+          <option value="60">60% (Simpanan Besar)</option>
+        </select>
+        <label class="form-label">Proyeksi ROA Koperasi (% p.a.)</label>
+        <div class="form-range-row">
+          <input type="range" class="form-range" id="bh-roa" min="5" max="20" step="1" value="12" oninput="calcBagiHasil()">
+          <span class="form-range-val" id="bh-roa-val">12%</span>
+        </div>
+        <button class="btn-calc" onclick="calcBagiHasil()">Hitung Bagi Hasil</button>
+      </div>
+      <div class="sim-result">
+        <h3 style="font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; margin-bottom:1.25rem; color:rgba(255,255,255,0.8);">Proyeksi Bagi Hasil</h3>
+        <div class="res-label">Estimasi Bagi Hasil / Bulan</div>
+        <div class="res-value" id="bh-perbulan">Rp 6.000</div>
+        <div class="res-sub">Berdasarkan nisbah & kinerja koperasi</div>
+        <div class="res-divider"></div>
+        <div class="res-row"><span class="rk">Total Simpanan</span><span class="rv" id="bh-tot">Rp 1.200.000</span></div>
+        <div class="res-row"><span class="rk">Bagi Hasil / Tahun</span><span class="rv" id="bh-pertahun">Rp 72.000</span></div>
+        <div class="res-row"><span class="rk">Ekuivalen p.a.</span><span class="rv" id="bh-persen">6%</span></div>
+        <div class="res-row"><span class="rk">Bunga Tabungan Bank</span><span class="rv" style="color:#9CA3AF;">~2% p.a.</span></div>
+        <div class="res-row"><span class="rk">SHU Tahunan (est.)</span><span class="rv" id="bh-shu">Rp 72.000</span></div>
+        <div class="res-highlight" id="bh-compare">
+          📈 Dibanding tabungan bank biasa, potensi bagi hasil Anda lebih tinggi. Dan ini halal.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANAJEMEN RISIKO -->
+<section id="risiko">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Manajemen Risiko</div>
+      <h2 class="section-title">Koperasi Profesional Dijaga<br>dengan Standar Industri</h2>
+      <p class="section-desc">Kami tidak hanya mengelola dana. Kami mengelola kepercayaan. Berikut framework risiko yang kami terapkan.</p>
+    </div>
+
+    <div class="risk-grid">
+
+      <!-- Rasio Keuangan -->
+      <div class="risk-card reveal">
+        <div class="risk-card-head">
+          <div class="risk-icon">📊</div>
+          <h3>Rasio Kesehatan Koperasi</h3>
+        </div>
+        <div class="ratio-list">
+          <div class="ratio-item">
+            <div class="ratio-top">
+              <span class="ratio-name">Capital Adequacy Ratio (CAR)</span>
+              <span class="ratio-val">≥ 12%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;"><span class="ratio-target">Standar minimum: 8%</span><span class="ratio-target">Target kami: Sehat</span></div>
+            <div class="ratio-bar"><div class="ratio-fill green" style="width:75%;"></div></div>
+          </div>
+          <div class="ratio-item">
+            <div class="ratio-top">
+              <span class="ratio-name">Non-Performing Financing (NPF)</span>
+              <span class="ratio-val">≤ 5%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;"><span class="ratio-target">Batas maksimal: 5%</span><span class="ratio-target">Diperkuat payroll deduction</span></div>
+            <div class="ratio-bar"><div class="ratio-fill gold" style="width:25%;"></div></div>
+          </div>
+          <div class="ratio-item">
+            <div class="ratio-top">
+              <span class="ratio-name">Financing to Deposit Ratio (FDR)</span>
+              <span class="ratio-val">80–90%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;"><span class="ratio-target">Rentang ideal: 80–110%</span><span class="ratio-target">Tidak overleveraged</span></div>
+            <div class="ratio-bar"><div class="ratio-fill" style="width:82%;"></div></div>
+          </div>
+          <div class="ratio-item">
+            <div class="ratio-top">
+              <span class="ratio-name">BOPO (Beban Operasional)</span>
+              <span class="ratio-val">≤ 70%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;"><span class="ratio-target">Batas efisiensi: 80%</span><span class="ratio-target">Efisiensi digital</span></div>
+            <div class="ratio-bar"><div class="ratio-fill green" style="width:65%;"></div></div>
+          </div>
+          <div class="ratio-item">
+            <div class="ratio-top">
+              <span class="ratio-name">Return on Assets (ROA)</span>
+              <span class="ratio-val">≥ 8%</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;"><span class="ratio-target">Minimum sehat: 1%</span><span class="ratio-target">Koperasi produktif</span></div>
+            <div class="ratio-bar"><div class="ratio-fill green" style="width:80%;"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PPAP -->
+      <div class="risk-card reveal">
+        <div class="risk-card-head">
+          <div class="risk-icon">🔐</div>
+          <h3>PPAP — Penyisihan Penghapusan Aktiva Produktif</h3>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6;">PPAP adalah cadangan yang wajib dibentuk koperasi untuk setiap pembiayaan yang diberikan, sebagai jaring pengaman kalau ada anggota yang gagal bayar.</p>
+        <table class="ppap-table">
+          <thead>
+            <tr>
+              <th>Kolektibilitas</th>
+              <th>Status</th>
+              <th>Tunggakan</th>
+              <th>PPAP Wajib</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge-kol kol-1">Kol-1</span></td>
+              <td>Lancar</td>
+              <td>0 hari</td>
+              <td>0.5%</td>
+            </tr>
+            <tr>
+              <td><span class="badge-kol kol-2">Kol-2</span></td>
+              <td>Kurang Lancar</td>
+              <td>1–30 hari</td>
+              <td>10%</td>
+            </tr>
+            <tr>
+              <td><span class="badge-kol kol-3">Kol-3</span></td>
+              <td>Diragukan</td>
+              <td>31–60 hari</td>
+              <td>30%</td>
+            </tr>
+            <tr>
+              <td><span class="badge-kol kol-4">Kol-4</span></td>
+              <td>Macet Ringan</td>
+              <td>61–90 hari</td>
+              <td>50%</td>
+            </tr>
+            <tr>
+              <td><span class="badge-kol kol-5">Kol-5</span></td>
+              <td>Macet</td>
+              <td>&gt; 90 hari</td>
+              <td>100%</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="simp-guarantee" style="margin-top:1rem;">
+          ⚡ Dengan payroll deduction, probabilitas Kol-2 ke atas sangat rendah karena angsuran dipotong sebelum gaji diterima karyawan.
+        </div>
+      </div>
+
+      <!-- Repayment Capacity -->
+      <div class="risk-card reveal">
+        <div class="risk-card-head">
+          <div class="risk-icon">⚖️</div>
+          <h3>Analisis Repayment Capacity</h3>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6;">Setiap pengajuan pembiayaan dianalisis berdasarkan kemampuan bayar riil. Bukan hanya riwayat kredit, tapi juga beban total kewajiban.</p>
+        <div style="background:var(--light);border-radius:8px;padding:1rem;font-size:0.8rem;">
+          <div style="display:flex;justify-content:space-between;font-weight:700;margin-bottom:0.5rem;">
+            <span>Komponen Analisis</span>
+            <span style="color:var(--primary);">Bobot</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--light-2);">
+            <span>Take-home Pay (setelah pajak)</span>
+            <span class="ratio-val">Dasar</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--light-2);">
+            <span>Maks. total angsuran koperasi</span>
+            <span class="ratio-val">30% THP</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--light-2);">
+            <span>Beban di luar koperasi (jika ada)</span>
+            <span class="ratio-val">Dikurangkan</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.3rem 0;border-bottom:1px solid var(--light-2);">
+            <span>Masa kerja tersisa</span>
+            <span class="ratio-val">Validasi tenor</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;padding:0.3rem 0;">
+            <span>Status kontrak kerja</span>
+            <span class="ratio-val">Wajib aktif</span>
+          </div>
+        </div>
+        <div style="background:rgba(10,110,92,0.07);border-radius:8px;padding:0.75rem;margin-top:0.75rem;font-size:0.78rem;color:var(--primary-dark);line-height:1.6;">
+          <strong>Contoh:</strong> Gaji Rp 4.000.000 → THP ~Rp 3.600.000 → Maks. angsuran koperasi = Rp 1.080.000/bulan.
+        </div>
+      </div>
+
+      <!-- Mekanisme Payroll Deduction -->
+      <div class="risk-card reveal">
+        <div class="risk-card-head">
+          <div class="risk-icon">🔄</div>
+          <h3>Mekanisme Payroll Deduction</h3>
+        </div>
+        <p style="font-size:0.8rem;color:var(--text-muted);margin-bottom:1rem;line-height:1.6;">Ini adalah keunggulan struktural koperasi berbasis perusahaan. Angsuran tidak bergantung pada itikad bayar — sudah terpotong sebelum gaji diterima.</p>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;">
+          <div style="background:var(--light);border-radius:8px;padding:0.75rem 1rem;display:flex;gap:10px;align-items:flex-start;">
+            <span style="font-size:1rem;margin-top:0.1rem;">①</span>
+            <div>
+              <div style="font-weight:600;font-size:0.82rem;margin-bottom:0.15rem;">HR Proses Payroll</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">Data angsuran koperasi masuk ke sistem payroll sebagai potongan tetap.</div>
+            </div>
+          </div>
+          <div style="background:var(--light);border-radius:8px;padding:0.75rem 1rem;display:flex;gap:10px;align-items:flex-start;">
+            <span style="font-size:1rem;margin-top:0.1rem;">②</span>
+            <div>
+              <div style="font-weight:600;font-size:0.82rem;margin-bottom:0.15rem;">Koperasi Terima Transfer</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">Angsuran ditransfer ke rekening koperasi bersamaan saat payroll diproses.</div>
+            </div>
+          </div>
+          <div style="background:var(--light);border-radius:8px;padding:0.75rem 1rem;display:flex;gap:10px;align-items:flex-start;">
+            <span style="font-size:1rem;margin-top:0.1rem;">③</span>
+            <div>
+              <div style="font-weight:600;font-size:0.82rem;margin-bottom:0.15rem;">Karyawan Terima Sisa Gaji</div>
+              <div style="font-size:0.75rem;color:var(--text-muted);">Karyawan menerima gaji bersih sudah dikurangi. Tidak ada risiko lupa bayar.</div>
+            </div>
+          </div>
+          <div style="background:rgba(10,110,92,0.08);border-radius:8px;padding:0.75rem 1rem;display:flex;gap:10px;align-items:flex-start;border-left:3px solid var(--primary);">
+            <span>✅</span>
+            <div style="font-size:0.78rem;color:var(--primary-dark);font-weight:500;">NPF mendekati 0% karena angsuran tidak pernah melewati tangan karyawan. Risiko gagal bayar inherently sangat rendah.</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- GOVERNANCE -->
+<section id="governance">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Tata Kelola</div>
+      <h2 class="section-title">Struktur Governance yang<br>Tidak Bisa Dimanipulasi</h2>
+      <p class="section-desc">Lima lapis pengawasan yang saling independen. Tidak ada satu pihak pun yang bisa bertindak sendiri.</p>
+    </div>
+
+    <div class="gov-grid">
+      <div>
+        <p style="font-size:0.78rem;color:rgba(255,255,255,0.45);margin-bottom:1.25rem;text-transform:uppercase;letter-spacing:0.06em;font-weight:600;">Hierarki Kewenangan</p>
+        <div class="gov-pyramid reveal">
+          <div class="pyr-level pyr-level-1">
+            <h4>Rapat Anggota Tahunan (RAT)</h4>
+            <p>Kekuasaan tertinggi — semua anggota punya suara</p>
+          </div>
+          <div class="pyr-level pyr-level-2">
+            <h4>Dewan Pengawas Syariah (DPS)</h4>
+            <p>Validasi keabsahan setiap akad & produk</p>
+          </div>
+          <div class="pyr-level pyr-level-3">
+            <h4>Pengawas Internal</h4>
+            <p>Audit operasional & keuangan — dari unsur anggota</p>
+          </div>
+          <div class="pyr-level pyr-level-4">
+            <h4>Pengurus & Manajemen Eksekutif</h4>
+            <p>Operasional harian — wajib lapor ke semua lapis di atas</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="gov-creds reveal">
+        <div class="cred-card">
+          <h4>🕌 Dewan Pengawas Syariah (DPS)</h4>
+          <p>DPS terdiri dari ulama/ahli fiqih muamalah yang kompeten. Setiap akad, produk baru, dan mekanisme operasional wajib mendapat fatwa atau persetujuan DPS sebelum dijalankan. DPS melapor langsung ke RAT, bukan ke Pengurus.</p>
+        </div>
+        <div class="cred-card">
+          <h4>👔 Kompetensi Manajemen</h4>
+          <p>Pengurus dan pengelola KSPPS Nusva berlatar belakang keuangan, HR, dan teknologi dengan track record industri. Tidak ada ruang bagi pengelolaan amatir.</p>
+          <div class="cert-badges">
+            <span class="cert-badge">CHRM BNSP</span>
+            <span class="cert-badge">MBA SBM ITB</span>
+            <span class="cert-badge">MEI Tazkia</span>
+            <span class="cert-badge">HCMS Architect</span>
+            <span class="cert-badge">16+ Tahun HR</span>
+            <span class="cert-badge">Syariah Finance</span>
+          </div>
+        </div>
+        <div class="cred-card">
+          <h4>📋 GCG — Good Corporate Governance</h4>
+          <p>Laporan keuangan diaudit eksternal setiap tahun. Hasil RAT diumumkan kepada seluruh anggota. Setiap keputusan pembiayaan di atas threshold tertentu wajib persetujuan Pengawas Internal. Rekening koperasi terpisah dari rekening pribadi pengurus.</p>
+        </div>
+        <div class="cred-card">
+          <h4>⚖️ Kepatuhan Regulasi</h4>
+          <p>KSPPS beroperasi di bawah UU No. 17 Tahun 2012, Permenkop, dan pengawasan OJK (untuk skala tertentu). Setiap perubahan AD/ART harus disetujui RAT dan dinotariskan.</p>
+          <div class="cert-badges">
+            <span class="cert-badge">UU No.17/2012</span>
+            <span class="cert-badge">Permenkop UMKM</span>
+            <span class="cert-badge">AD/ART Notaris</span>
+            <span class="cert-badge">OJK Framework</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST & KEAMANAN DANA -->
+<section id="trust">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Keamanan Dana</div>
+      <h2 class="section-title">Pertanyaan yang Wajar<br>Anda Tanyakan</h2>
+      <p class="section-desc">Kami paham keraguan ini adalah pertanyaan yang sehat dan perlu dijawab secara tuntas, bukan dihindari.</p>
+    </div>
+
+    <div class="trust-q-grid reveal">
+
+      <div class="trust-item">
+        <button class="trust-q" onclick="toggleTrust(this)">
+          <span>Bagaimana kami yakin koperasi tidak akan membawa kabur uang pegawai?</span>
+          <span class="q-icon">+</span>
+        </button>
+        <div class="trust-a">
+          <div class="trust-a-inner">
+            <p>Pertanyaan ini sangat wajar dan mencerminkan kecerdasan finansial. Jawabannya bukan sekadar "percayalah" — ini berbasis mekanisme struktural yang tidak bisa dimanipulasi satu orang:</p>
+            <ul>
+              <li><strong>Payroll deduction dikelola oleh HR perusahaan, bukan koperasi.</strong> Potongan gaji masuk ke rekening koperasi melalui sistem payroll Roxy Group. Koperasi tidak bisa meminta pembayaran di luar sistem ini.</li>
+              <li><strong>Simpanan disimpan di rekening bank atas nama koperasi, bukan nama personal.</strong> Rekening koperasi memerlukan tanda tangan ganda (minimal 2 pengurus) untuk setiap transaksi besar. Satu orang tidak bisa menarik dana sendiri.</li>
+              <li><strong>Pengawas Internal dipilih dari anggota koperasi (karyawan Roxy).</strong> Mereka bisa memeriksa buku rekening, buku kas, dan portofolio pembiayaan kapan saja.</li>
+              <li><strong>RAT tahunan adalah forum audit terbuka.</strong> Laporan keuangan lengkap dibacakan di hadapan seluruh anggota. Anggota bisa dan berhak mempertanyakan setiap angka.</li>
+              <li><strong>Koperasi adalah badan hukum.</strong> Pengurus bisa dituntut pidana jika menyalahgunakan dana anggota berdasarkan KUHP Pasal 374 tentang penggelapan dalam jabatan.</li>
+              <li><strong>Laporan audit eksternal.</strong> Kantor Akuntan Publik independen memeriksa laporan keuangan setiap tahun, hasilnya diserahkan ke RAT dan bisa diakses anggota.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <button class="trust-q" onclick="toggleTrust(this)">
+          <span>Apa jaminan simpanan saya dikembalikan saat resign?</span>
+          <span class="q-icon">+</span>
+        </button>
+        <div class="trust-a">
+          <div class="trust-a-inner">
+            <p>Hak pengembalian simpanan saat keluar dari keanggotaan dilindungi dua lapisan:</p>
+            <ul>
+              <li><strong>Pasal dalam UU Koperasi</strong> secara eksplisit menyatakan simpanan anggota wajib dikembalikan saat anggota mengundurkan diri.</li>
+              <li><strong>AD/ART KSPPS Nusva</strong> mencantumkan mekanisme dan timeline pengembalian yang spesifik — tidak bisa diubah sepihak tanpa persetujuan RAT.</li>
+              <li><strong>Simpanan Pokok dan Simpanan Wajib tidak pernah diikutsertakan dalam pembiayaan berisiko tinggi.</strong> Kami menjaga buffer likuiditas agar pengembalian tidak terhambat.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <button class="trust-q" onclick="toggleTrust(this)">
+          <span>Apakah ini halal? Bukankah margin murabahah sama saja dengan bunga?</span>
+          <span class="q-icon">+</span>
+        </button>
+        <div class="trust-a">
+          <div class="trust-a-inner">
+            <p>Pertanyaan fiqih yang valid. Bedanya bukan di angka, tapi di struktur transaksi:</p>
+            <ul>
+              <li><strong>Bunga (riba):</strong> Anda meminjam uang Rp 2 juta dan wajib mengembalikan lebih karena waktu. Objek transaksinya adalah uang.</li>
+              <li><strong>Murabahah:</strong> Koperasi membeli barang seharga Rp 2 juta, lalu menjual kepada Anda dengan harga Rp 2,3 juta secara cicilan. Objek transaksinya adalah barang nyata, bukan uang.</li>
+              <li>Perbedaan ini bukan semantik — ia menentukan sah atau tidaknya kontrak dalam hukum fiqih muamalah.</li>
+              <li><strong>DPS kami memvalidasi</strong> bahwa setiap akad memenuhi rukun dan syarat yang ditetapkan, termasuk bahwa barang wajib ada dan benar-benar berpindah kepemilikan.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <button class="trust-q" onclick="toggleTrust(this)">
+          <span>Bagaimana jika koperasi mengalami kerugian besar?</span>
+          <span class="q-icon">+</span>
+        </button>
+        <div class="trust-a">
+          <div class="trust-a-inner">
+            <p>Risiko ini nyata dan harus dijawab jujur. Mekanisme perlindungannya berlapis:</p>
+            <ul>
+              <li><strong>PPAP (cadangan kerugian)</strong> dibentuk sejak hari pertama untuk setiap pembiayaan. Kalau ada gagal bayar, sudah ada dana cadangannya.</li>
+              <li><strong>Payroll deduction menekan NPF hampir ke nol</strong> — skenario gagal bayar massal hampir tidak mungkin terjadi di lingkungan korporat.</li>
+              <li><strong>SHU tidak dibagikan seluruhnya</strong> — sebagian disisihkan sebagai dana cadangan koperasi.</li>
+              <li><strong>Simpanan Pokok dan Wajib adalah kewajiban koperasi yang harus diprioritaskan</strong> dalam skenario pembubaran, bukan aset yang bisa dihabiskan begitu saja.</li>
+              <li>Dalam kasus ekstrem pembubaran, anggota adalah kreditur pertama atas simpanan mereka.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="trust-item">
+        <button class="trust-q" onclick="toggleTrust(this)">
+          <span>Apakah Roxy Group punya kontrol atas koperasi?</span>
+          <span class="q-icon">+</span>
+        </button>
+        <div class="trust-a">
+          <div class="trust-a-inner">
+            <p>Ini justru fitur keamanan, bukan kelemahan:</p>
+            <ul>
+              <li><strong>Koperasi adalah entitas legal independen dari Roxy Group.</strong> Perusahaan tidak punya akses ke rekening atau dana koperasi.</li>
+              <li>Roxy Group <strong>memfasilitasi</strong> (menyediakan fasilitas, mengizinkan payroll deduction) tapi tidak mengelola atau mengontrol dana koperasi.</li>
+              <li>Pengurus koperasi dipilih oleh anggota (karyawan), bukan ditunjuk manajemen perusahaan.</li>
+              <li>Ini berarti <strong>dana karyawan aman dari instruksi korporat.</strong> Bahkan jika manajemen perusahaan berubah atau ada tekanan bisnis, dana koperasi tetap milik anggota.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROYEKSI ROXY GROUP -->
+<section id="proyeksi">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-tag">Proyeksi Dampak</div>
+      <h2 class="section-title">Kalau Roxy Group Bergabung:<br>Angkanya Bicara</h2>
+      <p class="section-desc">Berdasarkan asumsi 1.000 karyawan aktif, partisipasi bertahap 60% di tahun pertama.</p>
+    </div>
+
+    <div class="proj-kpi-grid reveal">
+      <div class="kpi-card">
+        <div class="kpi-icon">👥</div>
+        <span class="kpi-num">600</span>
+        <span class="kpi-label">Target Anggota Aktif Tahun 1</span>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">💰</div>
+        <span class="kpi-num">Rp 30M</span>
+        <span class="kpi-label">Simpanan Terkumpul Bulan ke-12</span>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">📈</div>
+        <span class="kpi-num">Rp 60K</span>
+        <span class="kpi-label">Est. SHU per Anggota / Tahun</span>
+      </div>
+      <div class="kpi-card">
+        <div class="kpi-icon">⚡</div>
+        <span class="kpi-num">&lt;1%</span>
+        <span class="kpi-label">Target NPF (Payroll Deduction)</span>
+      </div>
+    </div>
+
+    <div class="proj-table-wrap reveal">
+      <h3>Proyeksi Akumulasi Simpanan (3 Tahun)</h3>
+      <table class="proj-table">
+        <thead>
+          <tr>
+            <th>Periode</th>
+            <th>Anggota Aktif</th>
+            <th>Simpanan Pokok</th>
+            <th>Simpanan Wajib Kumulatif</th>
+            <th>Total Aset Kelola</th>
+            <th>Est. SHU / Anggota</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Bulan 3</td>
+            <td>300 orang</td>
+            <td>Rp 30.000.000</td>
+            <td>Rp 45.000.000</td>
+            <td>Rp 75.000.000</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Bulan 6</td>
+            <td>450 orang</td>
+            <td>Rp 45.000.000</td>
+            <td>Rp 135.000.000</td>
+            <td>Rp 180.000.000</td>
+            <td>—</td>
+          </tr>
+          <tr>
+            <td>Bulan 12</td>
+            <td>600 orang</td>
+            <td>Rp 60.000.000</td>
+            <td>Rp 360.000.000</td>
+            <td>Rp 420.000.000</td>
+            <td>Rp 60.000</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Tahun 2</td>
+            <td>750 orang</td>
+            <td>Rp 75.000.000</td>
+            <td>Rp 900.000.000</td>
+            <td>Rp 975.000.000</td>
+            <td>Rp 120.000</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Tahun 3</td>
+            <td>900 orang</td>
+            <td>Rp 90.000.000</td>
+            <td>Rp 1.620.000.000</td>
+            <td>Rp 1.710.000.000</td>
+            <td>Rp 200.000+</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="proj-table-wrap reveal" style="margin-top:1rem;">
+      <h3>Perbandingan: Koperasi vs Pinjol vs Bank Konvensional</h3>
+      <table class="proj-table">
+        <thead>
+          <tr>
+            <th>Aspek</th>
+            <th>KSPPS Nusva</th>
+            <th>Pinjaman Online</th>
+            <th>Bank Konvensional</th>
+            <th>Koperasi Konvensional</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Dana Darurat Rp 1 juta</td>
+            <td style="color:var(--success);font-weight:600;">Biaya Rp 20.000 flat</td>
+            <td style="color:var(--danger);">Rp 60.000–120.000/bln</td>
+            <td style="color:var(--text-muted);">Tidak dilayani</td>
+            <td style="color:var(--text-muted);">Bunga 1–3%/bln</td>
+          </tr>
+          <tr>
+            <td>Kehalalan Transaksi</td>
+            <td style="color:var(--success);font-weight:600;">Akad jelas + DPS</td>
+            <td style="color:var(--danger);">Riba (bunga harian)</td>
+            <td style="color:var(--danger);">Riba (bunga tetap)</td>
+            <td style="color:var(--danger);">Riba (bunga bulanan)</td>
+          </tr>
+          <tr>
+            <td>Simpanan Kembali 100%</td>
+            <td style="color:var(--success);font-weight:600;">Ya — dijamin UU</td>
+            <td style="color:var(--danger);">Tidak berlaku</td>
+            <td style="color:var(--text-muted);">Hanya saldo</td>
+            <td style="color:var(--text-muted);">Tergantung AD/ART</td>
+          </tr>
+          <tr>
+            <td>SHU / Dividen untuk Anggota</td>
+            <td style="color:var(--success);font-weight:600;">Ya — proporsional</td>
+            <td style="color:var(--danger);">Tidak ada</td>
+            <td style="color:var(--text-muted);">Bunga tabungan kecil</td>
+            <td style="color:var(--text-muted);">Ya, tapi tidak terstandar</td>
+          </tr>
+          <tr>
+            <td>Risiko Gagal Bayar</td>
+            <td style="color:var(--success);font-weight:600;">Sangat Rendah (Payroll)</td>
+            <td style="color:var(--danger);">Tinggi + denda</td>
+            <td style="color:var(--text-muted);">Sedang</td>
+            <td style="color:var(--text-muted);">Sedang–tinggi</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>KSPPS Nusva Digital Finansial Syariah</strong></p>
+  <p>Bagian dari Nusva Group &nbsp;·&nbsp; Jl. Cikutra No. 276, Neglasari, Cibeunying Kaler, Kota Bandung 40124</p>
+  <p style="margin-top:0.5rem;">Dokumen ini adalah ilustrasi produk untuk keperluan kerja sama korporat. Angka proyeksi bersifat estimasi berdasarkan asumsi yang dapat disesuaikan.</p>
+  <p style="margin-top:0.5rem;">Akad syariah divalidasi Dewan Pengawas Syariah &nbsp;·&nbsp; Legalitas berdasarkan UU No. 17 Tahun 2012</p>
+</footer>
+
+<script>
+// ── SIMULATOR LOGIC ──
+
+function fmt(n) {
+  return 'Rp ' + Math.round(n).toLocaleString('id-ID');
+}
+
+function switchTab(id) {
+  document.querySelectorAll('.sim-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.sim-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + id).classList.add('active');
+  const tabs = document.querySelectorAll('.sim-tab');
+  const map = { darurat: 0, murabahah: 1, bagihasil: 2 };
+  tabs[map[id]].classList.add('active');
+  if (id === 'darurat') calcDarurat();
+  if (id === 'murabahah') calcMurabahah();
+  if (id === 'bagihasil') calcBagiHasil();
+}
+
+function calcDarurat() {
+  const amount = parseInt(document.getElementById('darurat-amount').value);
+  const admin = parseInt(document.getElementById('darurat-admin').value);
+  document.getElementById('darurat-amount-val').textContent = fmt(amount);
+
+  const total = amount + admin;
+  const efektif = ((admin / amount) * 100).toFixed(1);
+  const pinjolCost = Math.round(amount * 0.006 * 30); // 0.4%/hari x 30 hari estimasi
+  const hemat = pinjolCost - admin;
+
+  document.getElementById('d-total').textContent = fmt(total);
+  document.getElementById('d-pokok').textContent = fmt(amount);
+  document.getElementById('d-admin').textContent = fmt(admin);
+  document.getElementById('d-efektif').textContent = efektif + '% (sekali)';
+  document.getElementById('d-compare').textContent = `💡 Dibanding pinjol (0.4%/hari, 30 hari), biaya Anda ${fmt(admin)} vs estimasi ${fmt(pinjolCost)}. Anda hemat ${fmt(hemat)}.`;
+}
+
+function calcMurabahah() {
+  const rate = parseInt(document.getElementById('mur-type').value);
+  const harga = parseInt(document.getElementById('mur-harga').value);
+  const tenor = parseInt(document.getElementById('mur-tenor').value);
+  document.getElementById('mur-harga-val').textContent = fmt(harga);
+  document.getElementById('mur-tenor-val').textContent = tenor + ' bulan';
+
+  const marginTotal = harga * (rate / 100) * (tenor / 12);
+  const totalJual = harga + marginTotal;
+  const angsuran = totalJual / tenor;
+
+  document.getElementById('m-angsuran').textContent = fmt(angsuran);
+  document.getElementById('m-sub').textContent = 'Flat selama ' + tenor + ' bulan';
+  document.getElementById('m-pokok').textContent = fmt(harga);
+  document.getElementById('m-margin').textContent = fmt(marginTotal);
+  document.getElementById('m-total').textContent = fmt(totalJual);
+  document.getElementById('m-rate').textContent = rate + '% p.a.';
+}
+
+function calcBagiHasil() {
+  const simpanan = parseInt(document.getElementById('bh-simpanan').value);
+  const nisbah = parseInt(document.getElementById('bh-nisbah').value);
+  const roa = parseInt(document.getElementById('bh-roa').value);
+  document.getElementById('bh-simpanan-val').textContent = fmt(simpanan);
+  document.getElementById('bh-roa-val').textContent = roa + '%';
+
+  const hasilKoperasi = simpanan * (roa / 100);
+  const bagiHasilTahun = hasilKoperasi * (nisbah / 100);
+  const bagiHasilBulan = bagiHasilTahun / 12;
+  const persenEfektif = (bagiHasilTahun / simpanan * 100).toFixed(1);
+
+  document.getElementById('bh-perbulan').textContent = fmt(bagiHasilBulan);
+  document.getElementById('bh-tot').textContent = fmt(simpanan);
+  document.getElementById('bh-pertahun').textContent = fmt(bagiHasilTahun);
+  document.getElementById('bh-persen').textContent = persenEfektif + '% p.a.';
+  document.getElementById('bh-shu').textContent = fmt(bagiHasilTahun);
+  document.getElementById('bh-compare').textContent =
+    `📈 Dengan nisbah ${nisbah}% dan ROA ${roa}%, bagi hasil Anda ${persenEfektif}% p.a. — jauh di atas bunga tabungan bank (±2%). Dan ini halal.`;
+}
+
+// ── TRUST ACCORDION ──
+function toggleTrust(btn) {
+  const item = btn.parentElement;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.trust-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}
+
+// ── SCROLL REVEAL ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// ── INIT ──
+calcDarurat();
+calcMurabahah();
+calcBagiHasil();
+</script>
+</body>
+</html>
